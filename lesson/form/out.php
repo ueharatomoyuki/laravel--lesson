@@ -7,7 +7,7 @@
 </form>
 
 <?php
-$co = $_GET["col"] ;
+$co = $_GET["col"]??"" ;
 ?>
 
 <?= $co ?>
