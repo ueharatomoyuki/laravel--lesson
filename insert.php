@@ -1,3 +1,18 @@
+<?php
+session_start();
+$err_msg["id"] = "";
+$err_msg["name"] = "";
+$err_msg["price"] = "";
+if(!empty($_SESSION["proId"])){
+  $err_msg["id"] = $_SESSION["proId"];
+}
+if(!empty($_SESSION["name"])){
+  $err_msg["name"] = $_SESSION["name"];
+}
+if(!empty($_SESSION["price"])){
+  $err_msg["price"] = $_SESSION["price"];
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +23,9 @@
 <body>
 
   <div class="header">
-    <h1 class="site_logo"><a href="menu.html">商品管理システム</a></h1>
+    <h1 class="site_logo"><a href="menu.php">商品管理システム</a></h1>
     <div class="user">
-      <p class="user_name">佐藤さん、こんにちは</p>
+      <p class="user_name"><?= $_SESSION["id"]?>さん、こんにちは</p>
       <form class="logout_form" action="logout.html" method="get">
         <button class="logout_btn" type="submit">
           <img src="images/ドアアイコン.png">ログアウト</button>
@@ -30,22 +45,22 @@
     <div class="form_body">
       <p class="error">エラーメッセージ</p>
   
-      <form action="menu.html" method="get">
+      <form action="./db/db_in.php" method="get">
         <fieldset class="label-130">
           <div>
             <label class="required">商品ID</label>
             <input type="text" name="productId" class="base-text">
-            <span class="error">エラーメッセージ</span>
+            <span class="error"><?= $err_msg["id"]?></span>
           </div>
           <div>
             <label class="required">商品名</label>
             <input type="text" name="name" class="base-text">
-            <span class="error">エラーメッセージ</span>
+            <span class="error"><?= $err_msg["name"]?></span>
           </div>
           <div>
             <label class="required">単価</label>
             <input type="text" name="price" class="base-text">
-            <span class="error">エラーメッセージ</span>
+            <span class="error"><?= $err_msg["price"]?></span>
           </div>
           <div class="select_block">
             <label class="required">カテゴリ</label>
@@ -69,7 +84,7 @@
         </fieldset>
         <div class="btns">
           <button type="button" onclick="openModal()" class="basic_btn">登録</button>
-          <input type="button" onclick="location.href='./menu.html'" value="戻る" class="cancel_btn">
+          <input type="button" onclick="location.href='./menu.php'" value="戻る" class="cancel_btn">
         </div>
         <div id="modal">
           <p class="modal_message">登録しますか？</p>
@@ -85,3 +100,8 @@
 </body>
 </html>
 <script src="./js/commons.js"></script>
+<?php 
+unset($_SESSION["proId"]);
+unset($_SESSION["name"]);
+unset($_SESSION["price"]);
+?>

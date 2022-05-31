@@ -1,5 +1,5 @@
 <?php
-session_start() ;
+ session_start() ;
 
 $id = '';
 $pass = '' ;
@@ -13,7 +13,7 @@ if(!empty($_SESSION["miss"])){
         $err_msg["id"] = "IDは必須です" ;
     }
 
-    if(!empty($session["empPass"])){
+    if(!empty($_SESSION["empPass"])){
         $err_msg["pass"] = "PASSは必須です";
     }
 ?>
@@ -54,5 +54,7 @@ if(!empty($_SESSION["miss"])){
 </html>
 <?php
 unset($_SESSION["miss"]);
+unset($_SESSION["empPass"]);
+unset($_SESSION["empId"]);
 ?>
 

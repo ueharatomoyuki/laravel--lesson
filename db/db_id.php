@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $pd = new PDO(
     'mysql:dbname=mysql_2;host=127.0.0.1',
 
@@ -11,14 +13,16 @@ $pd = new PDO(
 );
 
 $id = $_GET["loginId"];
-if($id = ""){
+if($id == ""){
     $_SESSION["empId"] = 1;
     header('Location:../index.php');
+    exit;
 }
-$pass = $_GET["empPass"];
-if($pass = ""){
-    $_SESSION["pass"] = 1;
+$pass = $_GET["pass"];
+if($pass == ""){
+    $_SESSION["empPass"] = 1;
     header('Location:../index.php');
+    exit;
 }
 $key = null ;
 $stmt = $pd->query("select password from users where login_id = '$id' ");
