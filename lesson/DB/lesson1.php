@@ -10,7 +10,7 @@ $pdo = new PDO(
     ]
 );
 
-$stmt = $pdo->query("select * from products ");
+$stmt = $pdo->query("select * from users ");
 $result = $stmt->fetchAll();
 echo "<table border='1'>";
 echo "<tr> <td><b>id</b></td> <td><b>商品名</b></td> <td><b>値段</b></td> <td><b>カテゴリ</b></td></tr>" ;
