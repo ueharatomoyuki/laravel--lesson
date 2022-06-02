@@ -24,17 +24,16 @@ if($pass == ""){
     header('Location:../index.php');
     exit;
 }
-$key = null ;
-$stmt = $pd->query("select password from users where login_id = '$id' ");
+$stmt = $pd->query("select password ,name from users where login_id = '$id' ");
 $result = $stmt->fetchAll();
 foreach ($result as $key=>$val){
    foreach($val as $va){
-       $key = $va ;
+       $pa[] = $va ;
    }
 }
 
-if($pass === $key){
-    $_SESSION["id"] = $id ;
+if($pass === $pa[0]){
+    $_SESSION["logName"] = $pa[1] ;
     $_SESSION["pass"] = $pass ;
     header('Location:../success.php');
 }else{

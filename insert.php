@@ -3,6 +3,7 @@ session_start();
 $err_msg["id"] = "";
 $err_msg["name"] = "";
 $err_msg["price"] = "";
+$msg = "";
 if(!empty($_SESSION["proId"])){
   $err_msg["id"] = $_SESSION["proId"];
 }
@@ -11,6 +12,9 @@ if(!empty($_SESSION["name"])){
 }
 if(!empty($_SESSION["price"])){
   $err_msg["price"] = $_SESSION["price"];
+}
+if(!empty($_SESSION["msg"])){
+  $msg = $_SESSION["msg"];
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +47,7 @@ if(!empty($_SESSION["price"])){
     </div>
   
     <div class="form_body">
-      <p class="error">エラーメッセージ</p>
+      <p class="error"><?=$msg?></p>
   
       <form action="./db/db_in.php" method="get">
         <fieldset class="label-130">
@@ -104,4 +108,5 @@ if(!empty($_SESSION["price"])){
 unset($_SESSION["proId"]);
 unset($_SESSION["name"]);
 unset($_SESSION["price"]);
+unset($_SESSION["msg"]);
 ?>

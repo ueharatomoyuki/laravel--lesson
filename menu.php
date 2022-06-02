@@ -24,7 +24,7 @@ session_start() ;
     <div class="header">
       <h1 class="site_logo"><a href="menu.php">商品管理システム</a></h1>
       <div class="user">
-        <p class="user_name"><?= $_SESSION["id"]?>さん、こんにちは</p>
+        <p class="user_name"><?= $_SESSION["logName"]?>さん、こんにちは</p>
         <form class="logout_form" action="logout.php" method="get">
           <button class="logout_btn" type="submit">
             <img src="images/ドアアイコン.png">ログアウト</button>
