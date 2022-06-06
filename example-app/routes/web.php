@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\IndexController;
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('index',function(){
+    return view('index');
+});
+
+Route::get('a',function(){
+    return view('a');
+});
+
+Route::POST('sum',[IndexController::class, 'sum']);
+
+Route::POST('animal-insert',[IndexController::class,'animal']);
+
+Route::get('insert',function(){
+    return view('insert');
 });
