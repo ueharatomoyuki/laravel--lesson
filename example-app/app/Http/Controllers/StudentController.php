@@ -19,7 +19,7 @@ class StudentController extends Controller
         DB::table('students')->insert([
             ['student_name' => "$name",'grade' => $num,'major_id' => $team,'hometown' => "$from"]
         ]);
-    }
+        }
 
         $request -> validate([
             'name' => 'required|between:0,50',

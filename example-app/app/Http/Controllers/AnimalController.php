@@ -25,4 +25,16 @@ class AnimalController extends Controller
         $animal -> save();
         return redirect('list');
     }
+
+    // 引数に渡した数値が3の倍数かどうか判定するメソッド
+public function multipleJudge($num)
+{
+	if($num % 3 === 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
+    
+}
+
